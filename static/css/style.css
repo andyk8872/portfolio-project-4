@@ -1,0 +1,39 @@
+body {
+    background-color: #fff;
+  }
+  
+  h1 {
+    font-family: 'Anton', sans-serif;
+    text-align: center;
+    color: goldenrod;    
+  }
+  
+  .brand {
+    color: goldenrod;
+  }
+  
+  .info {
+    background-color: #fff;
+    color: black;
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+  
+  .padding ul li {
+    padding: 5px 0;
+  }
+  
+  /* footer */
+  .footer {   
+    background-color: #f1f1f1;
+  }
+  
+  .copyright {
+    background-color: rgba(0, 0, 0, 0.2);
+  }
+  
+  /* map */
+  #map {
+     height: 280px;
+     border: 1px solid black; 
+  }
