@@ -19,36 +19,30 @@ class Booking(models.Model):
         on_delete=models.CASCADE,
         verbose_name=_('User name'),
         related_name='bookings',
-        blank=True, null=True,
-    )
+        blank=True, null=True)
 
     forename = models.CharField(
         verbose_name=_('First name'),
         max_length=20,
-        blank=True,
-    )
+        blank=True)
 
     surname = models.CharField(
         verbose_name=_('Last name'),
         max_length=20,
-        blank=True,
-    )
+        blank=True)
 
     email = models.EmailField(
         verbose_name=_('Email'),
-        blank=True,
-    )
+        blank=True)
 
     phone = models.CharField(
         verbose_name=_('Phone'),
         max_length=256,
-        blank=True,
-    )
+        blank=True)
 
     creation_date = models.DateTimeField(
         verbose_name=_('Creation date'),
-        auto_now_add=True,
-    )
+        auto_now_add=True)
 
     total_no_group = models.IntegerField(
         verbose_name=('No. in Group(Min 10, Max = 30)'),
@@ -57,25 +51,24 @@ class Booking(models.Model):
             MaxValueValidator(30),
             MinValueValidator(10)
         ],
-        blank=True, null=True,
-    )
+        blank=True, null=True)
 
     activity_type = models.CharField(
         verbose_name=_('Activity Type'),
         default='BBC',
+        max_length=256,
         choices=ACTIVITY_LIST)
 
     booking_date = models.DateField(
         verbose_name=_('Booking date'),
-        blank=True, null=True,
-    )
+        blank=True, null=True, unique=True)
 
     approved = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
-        if self.date < datetime.date.today():
+        if self.booking_date < datetime.date.today():
             raise ValidationError("The date cannot be in the past!")
-        super(Event, self).save(*args, **kwargs)
+        super(Booking, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['creation_date']
