@@ -2,4 +2,13 @@
 
 {% block content %}
 
+{% load crispy_forms_tags %}
+
+
+
+<form method="post" style="margin-top: 1.3em;">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button type="submit" class="btn btn-primary btn-signup btn-lg">Submit</button>
+</form>
 {%endblock%}

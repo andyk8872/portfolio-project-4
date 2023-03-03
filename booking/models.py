@@ -3,6 +3,8 @@ from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.exceptions import ValidationError
+import datetime
+from datetime import timedelta, date
 
 
 # Create your models here.
@@ -61,14 +63,10 @@ class Booking(models.Model):
 
     booking_date = models.DateField(
         verbose_name=_('Booking date'),
-        blank=True, null=True, unique=True)
+        blank=True, null=True, unique=True,
+        validators=[MinValueValidator(date.today() + timedelta(days=10))])
 
     approved = models.BooleanField(default=False)
-
-    def save(self, *args, **kwargs):
-        if self.booking_date < datetime.date.today():
-            raise ValidationError("The date cannot be in the past!")
-        super(Booking, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ['creation_date']

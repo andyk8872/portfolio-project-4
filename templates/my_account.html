@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="text-center" style="margin-top: 10px;">My Bookings</h1>
+
+
+<!-- <h5 class="card-title">Booking number: {{ bookings.id }} <span class="btn btn-success btn-sm disabled">Approved</span></h5> -->
+{% for booking in bookings %}
+<div class="card" style="width: 80%; margin-bottom: 10px;">
+  <div class="card-body">
+
+    {% if booking.approved is True %}
+    <p>{{ booking.booking_date }}</p>
+    <h5 class="card-title">Booking number: {{ booking.id }} <span class="btn btn-success btn-sm disabled">Approved</span></h5>
+    {% else %}
+    <p>{{ booking.booking_date }}</p>
+    <h5 class="card-title">Booking number: {{ booking.id }} <span class="btn btn-secondary btn-sm disabled">Waiting Approval</span></h5>
+
+
+    {% endif %}
+
+    {% endfor %}
+{% endblock %}
