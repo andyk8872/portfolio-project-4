@@ -11,9 +11,9 @@ from datetime import timedelta, date
 class Booking(models.Model):
 
     ACTIVITY_LIST = (
-        ('TBW', 'Team Building Workshop'),
-        ('CTC', 'Carnival Team Challenge'),
-        ('BBC', 'Bridge Building Challenge'),
+        ('Team Building Workshop', 'Team Building Workshop'),
+        ('Carnival Team Challenge', 'Carnival Team Challenge'),
+        ('Bridge Building Challeng', 'Bridge Building Challenge'),
     )
 
     user = models.ForeignKey(

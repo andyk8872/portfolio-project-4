@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from django.views.generic import TemplateView
 from .forms import BookingForm
@@ -44,3 +44,51 @@ def view_booking(request):
         'bookings': bookings,
     }
     return render(request, 'my_account.html', context)   
+
+
+# @login_required
+# def delete_booking(request, booking_id):
+#     """
+#     Deletes booking and sends an email to the user who placed it.
+#     John at tutor support helped med figure out this one.
+#     """
+#     if request.user.is_staff:
+#         try:
+#             booking = get_object_or_404(PlaceBooking, id=booking_id)
+          
+#             booking.delete()
+#             messages.success(request, 'Booking deleted successfully.')
+#             return redirect('my_account')
+#         except Http404 as err:
+#             messages.error(request, 'Oops, booking not found.')
+#             return redirect('my_account')
+#     else:
+#         return redirect('home')
+
+
+@login_required
+def delete_booking(request, booking_id):
+    item = get_object_or_404(Booking, id=booking_id)
+    item.delete()
+    return redirect('home')     
+
+
+# class EditBooking(TemplateView):
+#     template_name = "edit_booking.html"
+
+
+@login_required
+def edit_booking(request, booking_id):
+    booking = get_object_or_404(Booking, id=booking_id)
+    if request.method == 'POST':
+        form = BookingForm(request.POST, instance=booking)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    form = BookingForm(instance=booking)
+    context = {
+             'form': form
+    }
+    return render(request, 'edit_booking.html', context)
+

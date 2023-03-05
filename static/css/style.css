@@ -22,6 +22,10 @@ body {
   .padding ul li {
     padding: 5px 0;
   }
+
+  btn {
+    margin-top: 10px;
+  }
   
   /* footer */
   .footer {   
