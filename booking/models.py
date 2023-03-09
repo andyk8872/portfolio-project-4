@@ -64,7 +64,7 @@ class Booking(models.Model):
     booking_date = models.DateField(
         verbose_name=_('Booking date'),
         blank=True, null=True, unique=True,
-        validators=[MinValueValidator(date.today() + timedelta(days=10))])
+        validators=[MinValueValidator(date.today() + timedelta(days=2))])
 
     approved = models.BooleanField(default=False)
 

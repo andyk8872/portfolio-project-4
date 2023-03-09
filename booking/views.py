@@ -12,53 +12,79 @@ class HomePage(TemplateView):
     template_name = "index.html"
 
 
-
 @login_required
 def make_booking(request):
-   
+
     if request.method == 'POST':
         booking = Booking(user=request.user)
         form = BookingForm(request.POST, instance=booking)
         if form.is_valid():
             form.save()
-            return redirect('make_booking')
+            return redirect('my_account')
     else:
         form = BookingForm()
-    return render(request, 'make_booking.html', {'form': form}) 
+    return render(request, 'make_booking.html', {'form': form})
+
+
+# @login_required
+# def view_booking(request):
+#     if request.user.is_staff:
+#         bookings = Booking.objects.all()
+#     else:
+#         bookings = request.user.bookings.all()
+#     context = {
+#         'bookings': bookings,
+#     }
+#     return render(request, 'my_account.html', context)
 
 
 @login_required
 def view_booking(request):
-  
-    if request.user.is_staff:
-        bookings = Booking.objects.all()
-    else:
-        bookings = request.user.bookings.all()
+   
+    bookings = request.user.bookings.all()
     context = {
         'bookings': bookings,
     }
-    return render(request, 'my_account.html', context)   
+    return render(request, 'my_account.html', context)
 
 
 @login_required
 def delete_booking(request, booking_id):
     item = get_object_or_404(Booking, id=booking_id)
     item.delete()
-    return redirect('home')     
+    return redirect('my_account')
 
+
+# @login_required
+# def edit_booking(request, booking_id):
+#     booking = get_object_or_404(Booking, id=booking_id)
+#     if request.method == 'POST':
+#         form = BookingForm(request.POST, instance=booking)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('my_account')
+
+#     form = BookingForm(instance=booking)
+#     context = {
+#              'form': form
+#     }
+#     return render(request, 'edit_booking.html', context)
 
 @login_required
-def edit_booking(request, booking_id):
-    booking = get_object_or_404(Booking, id=booking_id)
-    if request.method == 'POST':
-        form = BookingForm(request.POST, instance=booking)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
+def edit_booking(request, booking_id):    
+    try:
+        booking = get_object_or_404(Booking, id=booking_id)
+        if request.method == 'POST':
+            form = BookingForm(request.POST, instance=booking)
+            if form.is_valid():
+                form.save()
+                return redirect('my_account')
+        else:
+            form = BookingForm(instance=booking)
+        context = {
+                 'form': form
+        }
+        return render(request, 'edit_booking.html', context)
 
-    form = BookingForm(instance=booking)
-    context = {
-             'form': form
-    }
-    return render(request, 'edit_booking.html', context)
-
+    except Http404 as err:
+        return redirect('my_account')
