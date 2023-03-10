@@ -12,6 +12,10 @@ class HomePage(TemplateView):
     template_name = "index.html"
 
 
+class ContactPage(TemplateView):
+    template_name = "contact.html"
+
+
 @login_required
 def make_booking(request):
 

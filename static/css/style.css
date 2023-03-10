@@ -1,43 +1,47 @@
-body {
-    background-color: 	#a9a9a9;
+  body {
+    background:
+      repeating-conic-gradient(#BF4D28 0 .00005%,#E1F5C4 0 .00017%) 0 0/5000px 4000px
   }
-  
-  h1 {
+
+h1 {
     font-family: 'Anton', sans-serif;
     text-align: center;
-    color: goldenrod;    
-  }
-  
-  .brand {
-    color: goldenrod;
-  }
-  
-  .info {
+    color: #009ed3;
+    letter-spacing: 5px;    
+}
+
+.brand {
+    color: #009ed3;
+}
+
+
+
+ul {
+    list-style: none;
+}
+
+.info {
     background-color: #fff;
     color: black;
     border-radius: 5px;
     border: 1px solid black;
-  }
-  
-  .padding ul li {
-    padding: 5px 0;
-  }
+}
 
-  btn {
-    margin-top: 10px;
-  }
-  
-  /* footer */
-  .footer {   
+.padding ul li {
+    padding: 5px 0;
+}
+
+/* footer */
+.footer {   
     background-color: #f1f1f1;
-  }
-  
-  .copyright {
+}
+
+.copyright {
     background-color: rgba(0, 0, 0, 0.2);
-  }
-  
-  /* map */
-  #map {
+}
+
+/* map */
+#map {
      height: 280px;
      border: 1px solid black; 
-  }
+}
