@@ -1,13 +1,21 @@
-  body {
+  /* body {
     background:
       repeating-conic-gradient(#BF4D28 0 .00005%,#E1F5C4 0 .00017%) 0 0/5000px 4000px
-  }
+  } */
 
+body {
+    background-color: #0a1172;
+}
+  
 h1 {
     font-family: 'Anton', sans-serif;
     text-align: center;
     color: #009ed3;
     letter-spacing: 5px;    
+}
+
+.white {
+    color: #fff;
 }
 
 .brand {

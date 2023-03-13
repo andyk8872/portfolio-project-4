@@ -20,6 +20,12 @@ class BookingForm(forms.ModelForm):
                   'booking_date',)
         widgets = {
             'booking_date': DateInput(attrs={
+                'required': True,
                 'min': datetime.date.today()+datetime.timedelta(days=2),
                 'max': datetime.date.today()+datetime.timedelta(days=60)}),
+            'email': forms.EmailInput(attrs={
+                'required': True}),
+            'forename': forms.TextInput(attrs={
+                'required': True,
+            })
                 }

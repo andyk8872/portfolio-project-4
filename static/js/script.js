@@ -13,3 +13,11 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 var marker = L.marker([54.2673456244, -8.4723157056]).addTo(map);
 
 marker.bindPopup("<b>TEAM | BUILD</b>").openPopup();
+
+// messages
+
+// setTimeout(function () {
+//     let messages = document.getElementById('msg');
+//     let alert = new bootstrap.Alert(messages);
+//     alert.close();
+// }, 2500);
