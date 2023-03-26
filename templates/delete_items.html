@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<h1 class="display-3 mt-5">Delete Confirm</h1>
+
+<div class="container">
+  
+
+
+  <div class="row">
+      <div class="col-md-4 mt-3 mb-3 offset-md-4">
+          <form method="post" style="margin-top: 1.3em;">             
+              {% csrf_token %}
+              <h1>Are you sure you want to delete? {{ booking.forename }}</h1>
+              <br>
+              <input type="submit" class="btn btn-warning btn-signup btn-lg" value="Yes" />
+              <a href="/my_account"><div class="btn btn-primary">Cancel</div></a>              
+          </form>
+      </div>
+
+  </div>
+
+</div>
+
+  {% endblock %}

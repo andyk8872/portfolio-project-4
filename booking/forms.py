@@ -1,4 +1,4 @@
-from .models import Booking
+from .models import Booking, Review
 from django import forms
 import datetime
 
@@ -15,6 +15,7 @@ class BookingForm(forms.ModelForm):
         fields = ('forename',
                   'surname',
                   'email',
+                  'phone',
                   'total_no_group',
                   'activity_type',
                   'booking_date',)
@@ -29,3 +30,19 @@ class BookingForm(forms.ModelForm):
                 'required': True,
             })
                 }
+
+
+class ContactForm(forms.Form):
+    name = forms.CharField(max_length=255)
+    email = forms.EmailField()
+    content = forms.CharField(widget=forms.Textarea)
+
+
+class ReviewForm(forms.ModelForm):
+    """
+    Presents the form for placing a review
+    to the user.
+    """
+    class Meta:
+        model = Review
+        fields = ('review',)

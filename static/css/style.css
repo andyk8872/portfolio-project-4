@@ -4,14 +4,19 @@
   } */
 
 body {
-    background-color: #0a1172;
+    background-color:  #f0ebe8;
 }
+
   
 h1 {
     font-family: 'Anton', sans-serif;
     text-align: center;
     color: #009ed3;
     letter-spacing: 5px;    
+}
+
+h2 {
+    color: #201A1E;
 }
 
 .white {
@@ -52,4 +57,13 @@ ul {
 #map {
      height: 280px;
      border: 1px solid black; 
+}
+
+/* forms */
+.bg-form {
+    background-color: #d4d4d4;
+}
+
+.max {
+    max-width: 50%;
 }

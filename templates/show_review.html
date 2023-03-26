@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="display-1 mt-5">Show Reviews</h1>
+
+<h3 class="text-center">What does our customer say?</h3>
+<div class="card-deck text-center">
+  
+  <!-- Showing the reviews -->
+  {% for review in reviews %}
+  {% if review.approved  %}
+  <div class="card bg-light mb-3 mx-auto" style="max-width: 36rem;">
+    
+    <div class="card-body">
+      <h5 class="card-title">Review from: {{ review.user }}</h5>
+      <p class="card-text">"{{ review.review }}"</p>
+      <p class="card-text"><small>{{ review.created_on }}</small></p>
+    </div>
+  </div>
+
+
+  {% endif %}
+  {% endfor %}
+  
+</div>
+
+{%endblock%}

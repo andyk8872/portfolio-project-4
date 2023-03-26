@@ -1,29 +1,25 @@
 {% extends "base.html" %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
-{% load crispy_forms_tags %}
+<h1 class="display-1 mt-5">Make Reviews</h1>
 
-<h1 class="display-1 mt-5">Contact</h1>
 <div class="container">
+  
+
+
     <div class="row bg-dark text-white">
         <div class="col-md-4 mt-3 mb-3 offset-md-4">
-            <form method="post" action="." style="margin-top: 1.3em;">
+            <form method="post" style="margin-top: 1.3em;">
                 {{ form | crispy }}
                 {% csrf_token %}
                 <br>
                 <button type="submit" class="btn btn-primary btn-signup btn-lg">Submit</button>
             </form>
         </div>
+
     </div>
+
 </div>
-
-<!-- <form method="post" action=".">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button>Submit</button>
-</form> -->
 
 {%endblock%}

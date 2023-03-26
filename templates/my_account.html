@@ -38,8 +38,9 @@
       <h5>Booking name: {{ booking.forename }} <span class="btn btn-secondary btn-sm disabled">Waiting Approval</span>
       </h5>
 <div class="mb-3">
-      <a href="/delete/{{ booking.id }}" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">Delete</a> 
+      <!-- <a href="/delete/{{ booking.id }}" class="btn btn-danger">Delete</a>  -->
       
+      <a href="/delete_items/{{ booking.id }}" class="btn btn-danger">Delete</a> 
       <a href="/edit_booking/{{ booking.id }}" class="btn btn-primary">Update</a>
     </div>
     </div>
